@@ -7,6 +7,6 @@ package com.mks.delivery.domain
  */
 class Delivery {
 
-    int id
-    boolean confirmedByPos
+    Integer id
+    Boolean confirmedByPos
 }

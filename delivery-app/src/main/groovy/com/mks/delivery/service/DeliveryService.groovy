@@ -14,23 +14,29 @@ import org.springframework.stereotype.Service
 @Service
 class DeliveryService {
 
-    Delivery prepareDelivery(int posId, List<Product> products) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+    Delivery prepareDelivery(Integer posId, List<Product> products) {
+        Delivery delivery = new Delivery()
+        delivery.id = 1
+        delivery.confirmedByPos = true
+        return delivery
     }
 
-    Delivery confirmDeliveryByProvider(int deliveryId) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
-    }
-
-    Delivery findDeliveryById(int deliveryId) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
-    }
-
-    void confirmDeliveryByPos(int deliveryId) {
+    void confirmDeliveryByProvider(Integer deliveryId) {
         //To change body of created methods use File | Settings | File Templates.
     }
 
-    void correctDelivery(Correction correction, int deliveryId) {
+    Delivery findDeliveryById(Integer deliveryId) {
+        Delivery delivery = new Delivery()
+        delivery.id = 1
+        delivery.confirmedByPos = true
+        return delivery
+    }
+
+    void confirmDeliveryByPos(Integer deliveryId) {
+        //To change body of created methods use File | Settings | File Templates.
+    }
+
+    void correctDelivery(Correction correction, Integer deliveryId) {
         //To change body of created methods use File | Settings | File Templates.
     }
 }

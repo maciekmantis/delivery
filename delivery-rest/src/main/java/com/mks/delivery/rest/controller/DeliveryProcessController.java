@@ -8,7 +8,7 @@ import com.mks.delivery.rest.dto.DeliveryDto;
 import com.mks.delivery.rest.dto.ProductDto;
 import com.mks.delivery.service.DeliveryProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,27 +19,31 @@ import java.util.List;
  */
 
 @RestController
+@RequestMapping("/delivery-process")
 public class DeliveryProcessController {
 
     @Autowired
     private DeliveryProcessService deliveryProcessService;
 
-    public DeliveryDto createDelivery(int posId, List<ProductDto> productsDto) {
+    @RequestMapping(value = "/init", method = RequestMethod.POST)
+    public DeliveryDto createDelivery(
+            @RequestParam(required = false) Integer posId, @RequestBody(required = false) List<ProductDto> productsDto) {
         List<Product> products = ProductDto.fromDto(productsDto);
         Delivery delivery = deliveryProcessService.createDelivery(posId, products);
         return DeliveryDto.toDto(delivery);
     }
 
-    public DeliveryDto findDelivery(int deliveryId) {
+    @RequestMapping(value = "/{deliveryId}", method = RequestMethod.POST)
+    public DeliveryDto findDelivery(@PathVariable Integer deliveryId) {
         Delivery delivery = deliveryProcessService.findDelivery(deliveryId);
         return DeliveryDto.toDto(delivery);
     }
 
-    public void confirmDeliveryByPos(int deliveryId) {
+    public void confirmDeliveryByPos(Integer deliveryId) {
         deliveryProcessService.confirmDeliveryByPos(deliveryId);
     }
 
-    public void correctDelivery(CorrectionDto correctionDto, int deliveryId) {
+    public void correctDelivery(CorrectionDto correctionDto, Integer deliveryId) {
         Correction correction = CorrectionDto.fromDto(correctionDto);
         deliveryProcessService.correctDelivery(correction, deliveryId);
     }

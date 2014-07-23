@@ -11,7 +11,7 @@
 		<jackson.version>2.2.2</jackson.version>
 		<jaxb-api.version>2.2.9</jaxb-api.version>
 
-		<server.url>http://127.0.0.1:53126</server.url>
+		<server.url>http://127.0.0.1:8080</server.url>
 	</properties>
 
 	<parent>
@@ -71,7 +71,7 @@
 					<!-- Set tomcat credenctials here or in .m2/settings.xml -->
 
 					<username>tomcat</username>
-					<password>123</password>
+					<password>s3cret</password>
 
 					<!-- Deploy: mvn tomcat7:deploy -->
 					<!-- Redeploy: mvn tomcat7:redeploy -->

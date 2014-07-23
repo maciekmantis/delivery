@@ -5,14 +5,11 @@ import com.mks.delivery.domain.Delivery
 import com.mks.delivery.domain.Product
 import com.mks.delivery.service.DeliveryProcessService
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-
-import static org.mockito.Mockito.*
 
 /**
  * Created by mscislowski on 10.07.14.
@@ -22,13 +19,8 @@ import static org.mockito.Mockito.*
 @ContextConfiguration(classes = [AppConfig.class])
 class DeliveryProcessServiceTest {
 
-    @Mock
+    @Autowired
     DeliveryProcessService deliveryProcessService
-
-    @Before
-    void init() {
-        mock(DeliveryProcessService.class)
-    }
 
     @Test
     void deliveryWithConfirmation() {

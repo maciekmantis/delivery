@@ -8,7 +8,30 @@ import com.mks.delivery.domain.Delivery;
  * Time: 06:58
  */
 public class DeliveryDto {
+
+    private int id;
+    private boolean confirmedByPos;
+
     public static DeliveryDto toDto(Delivery delivery) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        DeliveryDto deliveryDto = new DeliveryDto();
+        deliveryDto.setId(delivery.getId());
+        deliveryDto.setConfirmedByPos(delivery.getConfirmedByPos());
+        return deliveryDto;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setConfirmedByPos(boolean confirmedByPos) {
+        this.confirmedByPos = confirmedByPos;
+    }
+
+    public boolean isConfirmedByPos() {
+        return confirmedByPos;
     }
 }

@@ -11,15 +11,15 @@ import org.springframework.stereotype.Service
 @Service
 class DocumentService {
 
-    void generateWZ(int deliveryId) {
+    void generateWZ(Integer deliveryId) {
         //To change body of created methods use File | Settings | File Templates.
     }
 
-    void generateInvoice(int deliveryId) {
+    void generateInvoice(Integer deliveryId) {
         //To change body of created methods use File | Settings | File Templates.
     }
 
-    void generateWZCorrection(int deliveryId) {
+    void generateWZCorrection(Integer deliveryId) {
         //To change body of created methods use File | Settings | File Templates.
     }
 }
