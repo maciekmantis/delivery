@@ -22,11 +22,10 @@ class DeliveryProcessService {
 
     public Delivery createDelivery(int posId, List<Product> products) {
         Delivery delivery = deliveryService.prepareDelivery(posId, products)
-        delivery = deliveryService.confirmDeliveryByProvider(delivery.deliveryId)
-        documentService.generateWZ(delivery.deliveryId)
+        delivery = deliveryService.confirmDeliveryByProvider(delivery.id)
+        documentService.generateWZ(delivery.id)
         return delivery
     }
-
 
     public Delivery findDelivery(int deliveryId) {
         return deliveryService.findDeliveryById(deliveryId)
@@ -34,7 +33,7 @@ class DeliveryProcessService {
     }
 
     public void confirmDeliveryByPos(int deliveryId) {
-        delivery = deliveryService.confirmDeliveryByPos(deliveryId)
+        deliveryService.confirmDeliveryByPos(deliveryId)
         documentService.generateInvoice(deliveryId)
     }
 

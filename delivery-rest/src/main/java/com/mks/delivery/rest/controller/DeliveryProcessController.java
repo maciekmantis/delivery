@@ -60,10 +60,10 @@ public class DeliveryProcessController {
 //                deliveryDetailsService.createDeliveryDetails(params));
 //    }
 //
-//    @RequestMapping(value = "/{deliveryId}", method = RequestMethod.PUT)
+//    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 //    @ResponseStatus(HttpStatus.OK)
-//    public Delivery updateDelivery(@PathVariable final Integer deliveryId, Map<String, String> params) {
-//        Delivery delivery = deliveryService.findDeliveryById(deliveryId);
+//    public Delivery updateDelivery(@PathVariable final Integer id, Map<String, String> params) {
+//        Delivery delivery = deliveryService.findDeliveryById(id);
 //        return deliveryService.updateDelivery(delivery,
 //                deliveryDetailsService.createDeliveryDetails(params));
 //    }
