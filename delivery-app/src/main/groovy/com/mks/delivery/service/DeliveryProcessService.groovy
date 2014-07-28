@@ -20,24 +20,27 @@ class DeliveryProcessService {
     @Autowired
     private DocumentService documentService
 
-    public Delivery createDelivery(Integer posId, List<Product> products) {
-        Delivery delivery = deliveryService.prepareDelivery(posId, products)
-        deliveryService.confirmDeliveryByProvider(delivery.id)
-        documentService.generateWZ(delivery.id)
+    Delivery createDelivery(Integer posId, List<Product> products) {
+        Delivery delivery = deliveryService.createDelivery(posId, products)
         return delivery
     }
 
-    public Delivery findDelivery(Integer deliveryId) {
+    Delivery findDelivery(Integer deliveryId) {
         return deliveryService.findDeliveryById(deliveryId)
 
     }
 
-    public void confirmDeliveryByPos(Integer deliveryId) {
+    void confirmDeliveryByProvider(Integer deliveryId) {
+        deliveryService.confirmDeliveryByProvider(deliveryId)
+        documentService.generateWZ(deliveryId)
+    }
+
+    void confirmDeliveryByPos(Integer deliveryId) {
         deliveryService.confirmDeliveryByPos(deliveryId)
         documentService.generateInvoice(deliveryId)
     }
 
-    public void correctDelivery(Correction correction, Integer deliveryId) {
+    void correctDelivery(Correction correction, Integer deliveryId) {
         deliveryService.correctDelivery(correction, deliveryId)
         documentService.generateWZCorrection(deliveryId)
         documentService.generateWZ(deliveryId)

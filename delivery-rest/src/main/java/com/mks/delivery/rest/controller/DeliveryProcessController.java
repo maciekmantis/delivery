@@ -19,36 +19,55 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/delivery-process")
 public class DeliveryProcessController {
 
     @Autowired
     private DeliveryProcessService deliveryProcessService;
 
-    @RequestMapping(value = "/init", method = RequestMethod.POST)
+    @RequestMapping(value = "/deliveries", method = RequestMethod.POST)
     public DeliveryDto createDelivery(
-            @RequestParam(required = false) Integer posId, @RequestBody(required = false) List<ProductDto> productsDto) {
+            @RequestParam(required = false) String posId,
+            @RequestBody(required = false) List<ProductDto> productsDto) {
         List<Product> products = ProductDto.fromDto(productsDto);
-        Delivery delivery = deliveryProcessService.createDelivery(posId, products);
+        Delivery delivery = deliveryProcessService.createDelivery(Integer.parseInt("10"), products);
         return DeliveryDto.toDto(delivery);
     }
 
-    @RequestMapping(value = "/{deliveryId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delivery/{deliveryId}", method = RequestMethod.GET)
     public DeliveryDto findDelivery(@PathVariable Integer deliveryId) {
         Delivery delivery = deliveryProcessService.findDelivery(deliveryId);
         return DeliveryDto.toDto(delivery);
     }
 
-    public void confirmDeliveryByPos(Integer deliveryId) {
+    @RequestMapping(value = "/delivery/{deliveryId}/provider-confirmation", method = RequestMethod.POST)
+    public void confirmDeliveryByProvider(@PathVariable Integer deliveryId) {
+        deliveryProcessService.confirmDeliveryByProvider(deliveryId);
+    }
+
+    @RequestMapping(value = "/delivery/{deliveryId}/pos-confirmation", method = RequestMethod.POST)
+    public void confirmDeliveryByPos(@PathVariable Integer deliveryId) {
         deliveryProcessService.confirmDeliveryByPos(deliveryId);
     }
 
-    public void correctDelivery(CorrectionDto correctionDto, Integer deliveryId) {
+    @RequestMapping(value = "/delivery/{deliveryId}/correction", method = RequestMethod.POST)
+    public void correctDelivery(@RequestBody CorrectionDto correctionDto, @PathVariable Integer deliveryId) {
         Correction correction = CorrectionDto.fromDto(correctionDto);
         deliveryProcessService.correctDelivery(correction, deliveryId);
     }
 
 }
+
+/**
+ * deliveries POST - new delivery for user (from param)
+ * deliveries GET - get deliveries by user (from param)
+ *
+ * delivery/{deliveryId} GET - get particulary delivery for user (form param)
+ * delivery/{id}/provider-confirmation
+ * delivery/{id}/pos-confirmation
+ *
+ *
+ */
+
 
 //    @Autowired
 //    DeliveryService deliveryService;

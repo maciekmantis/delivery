@@ -3,6 +3,8 @@ package com.mks.delivery.service
 import com.mks.delivery.domain.Correction
 import com.mks.delivery.domain.Delivery
 import com.mks.delivery.domain.Product
+import com.mks.delivery.repository.DeliveryRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 /**
@@ -14,26 +16,28 @@ import org.springframework.stereotype.Service
 @Service
 class DeliveryService {
 
-    Delivery prepareDelivery(Integer posId, List<Product> products) {
+    @Autowired
+    DeliveryRepository deliveryRepository
+
+    Delivery createDelivery(Integer posId, List<Product> products) {
         Delivery delivery = new Delivery()
         delivery.id = 1
-        delivery.confirmedByPos = true
+        deliveryRepository.save(delivery)
         return delivery
     }
 
     void confirmDeliveryByProvider(Integer deliveryId) {
-        //To change body of created methods use File | Settings | File Templates.
-    }
-
-    Delivery findDeliveryById(Integer deliveryId) {
-        Delivery delivery = new Delivery()
-        delivery.id = 1
-        delivery.confirmedByPos = true
-        return delivery
+        Delivery delivery = deliveryRepository.findOne(1)
+        delivery.confirmedByProvider = true
     }
 
     void confirmDeliveryByPos(Integer deliveryId) {
-        //To change body of created methods use File | Settings | File Templates.
+        Delivery delivery = deliveryRepository.findOne(1)
+        delivery.confirmedByPos = true
+    }
+
+    Delivery findDeliveryById(Integer deliveryId) {
+        return deliveryRepository.findOne(1)
     }
 
     void correctDelivery(Correction correction, Integer deliveryId) {
