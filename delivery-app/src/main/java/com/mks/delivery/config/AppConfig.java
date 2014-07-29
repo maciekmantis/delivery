@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(DBConfig.class)
+@Import(DbConfig.class)
 @ComponentScan(basePackages = "com.mks.delivery")
 public class AppConfig {
 

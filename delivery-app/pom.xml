@@ -41,13 +41,13 @@
             <version>${spring.data.jpa.version}</version>
         </dependency>
 
-        <!-- groovy -->
+        <!--&lt;!&ndash; groovy &ndash;&gt;-->
 
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.3.3</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.codehaus.groovy</groupId>-->
+            <!--<artifactId>groovy-all</artifactId>-->
+            <!--<version>2.3.3</version>-->
+        <!--</dependency>-->
 
         <!-- hibernate -->
 
@@ -78,52 +78,52 @@
         <finalName>delivery-app</finalName>
 
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
-                    <!--<testSource>src/test/groovy/**/*.groovy</testSource>-->
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.7.0-01</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
+            <!--<plugin>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<version>2.3.2</version>-->
+                <!--<configuration>-->
+                    <!--<compilerId>groovy-eclipse-compiler</compilerId>-->
+                    <!--&lt;!&ndash;<testSource>src/test/groovy/**/*.groovy</testSource>&ndash;&gt;-->
+                <!--</configuration>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.codehaus.groovy</groupId>-->
+                        <!--<artifactId>groovy-eclipse-compiler</artifactId>-->
+                        <!--<version>2.7.0-01</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>build-helper-maven-plugin</artifactId>-->
+                <!--<version>1.8</version>-->
+                <!--<executions>-->
+                    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<id>add-source</id>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<phase>generate-sources</phase>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<goal>add-source</goal>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<sources>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<source>src/main/groovy</source>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</sources>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
                     <!--<execution>-->
-                        <!--<id>add-source</id>-->
-                        <!--<phase>generate-sources</phase>-->
+                        <!--<id>add-test-source</id>-->
+                        <!--<phase>generate-test-sources</phase>-->
                         <!--<goals>-->
-                            <!--<goal>add-source</goal>-->
+                            <!--<goal>add-test-source</goal>-->
                         <!--</goals>-->
                         <!--<configuration>-->
                             <!--<sources>-->
-                                <!--<source>src/main/groovy</source>-->
+                                <!--<source>src/test/groovy</source>-->
                             <!--</sources>-->
                         <!--</configuration>-->
                     <!--</execution>-->
-                    <execution>
-                        <id>add-test-source</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>add-test-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/test/groovy</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+                <!--</executions>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

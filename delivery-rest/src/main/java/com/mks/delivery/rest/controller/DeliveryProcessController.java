@@ -1,15 +1,16 @@
 package com.mks.delivery.rest.controller;
 
-import com.mks.delivery.domain.Correction;
 import com.mks.delivery.domain.Delivery;
 import com.mks.delivery.domain.Product;
-import com.mks.delivery.rest.dto.CorrectionDto;
-import com.mks.delivery.rest.dto.DeliveryDto;
-import com.mks.delivery.rest.dto.ProductDto;
+import com.mks.delivery.rest.domain.DeliveryPreparation;
+import com.mks.delivery.rest.domain.ProductSet;
+import com.mks.delivery.rest.domain.dto.DeliveryDto;
 import com.mks.delivery.service.DeliveryProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,12 +25,21 @@ public class DeliveryProcessController {
     @Autowired
     private DeliveryProcessService deliveryProcessService;
 
-    @RequestMapping(value = "/deliveries", method = RequestMethod.POST)
-    public DeliveryDto createDelivery(
-            @RequestParam(required = false) String posId,
-            @RequestBody(required = false) List<ProductDto> productsDto) {
-        List<Product> products = ProductDto.fromDto(productsDto);
-        Delivery delivery = deliveryProcessService.createDelivery(Integer.parseInt("10"), products);
+    @RequestMapping(value = "/delivery/preparation", method = RequestMethod.POST)
+    public DeliveryDto prepareDelivery(
+            @RequestBody Delivery delivery) {
+//        DeliveryPreparation deliveryPreparation = new DeliveryPreparation();
+//        Long posId = deliveryPreparation.getPosId();
+//        List<Product> products = new ArrayList<Product>();
+//
+//        for (ProductSet productSet : deliveryPreparation.getProductSets()) {
+//            Product product = new Product();
+//            product.setCode(productSet.getCode());
+//            product.setQuantity(productSet.getQuantity());
+//            products.add(product);
+//        }
+//        Delivery delivery = deliveryProcessService.createDelivery(posId, products);
+
         return DeliveryDto.toDto(delivery);
     }
 
@@ -49,11 +59,11 @@ public class DeliveryProcessController {
         deliveryProcessService.confirmDeliveryByPos(deliveryId);
     }
 
-    @RequestMapping(value = "/delivery/{deliveryId}/correction", method = RequestMethod.POST)
-    public void correctDelivery(@RequestBody CorrectionDto correctionDto, @PathVariable Integer deliveryId) {
-        Correction correction = CorrectionDto.fromDto(correctionDto);
-        deliveryProcessService.correctDelivery(correction, deliveryId);
-    }
+//    @RequestMapping(value = "/delivery/{deliveryId}/correction", method = RequestMethod.POST)
+//    public void correctDelivery(@RequestBody CorrectionDto correctionDto, @PathVariable Integer deliveryId) {
+//        Correction correction = CorrectionDto.fromDto(correctionDto);
+//        deliveryProcessService.correctDelivery(correction, deliveryId);
+//    }
 
 }
 

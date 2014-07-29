@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories("com.mks.delivery.repository")
 @EnableTransactionManagement
-class DBConfig {
+class DbConfig {
 
     @Bean
     public DataSource dataSource() {
